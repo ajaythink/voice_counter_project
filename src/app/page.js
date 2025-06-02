@@ -5,23 +5,11 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 
 export default function Home() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const startListning = () =>
-    SpeechRecognition.startListening({ continuous: true, language: "en-IN" });
+  const [count, setCount] = useState(0);
 
   const { transcript, browserSupportsSpeechRecognition } =
     useSpeechRecognition();
 
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser does not support speech recognition.</span>;
-  }
-
-  const [count, setCount] = useState(0);
   useEffect(() => {
     if (transcript) {
       const words = transcript.trim().split(/\s+/);
@@ -29,10 +17,18 @@ export default function Home() {
     }
   }, [transcript]);
 
+  if (!browserSupportsSpeechRecognition) {
+    return <span>Browser does not support speech recognition.</span>;
+  }
+  const startListning = () =>
+    SpeechRecognition.startListening({ continuous: true, language: "en-IN" });
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className=" text-center text-2xl font-bold m-4">Voice Counter App</h1>
-      <p className="text-6xl font-bold text-green-500 m-4 border-2 rounded-full p-2 bg-blue-50">{count}</p>
+      <p className="text-6xl font-bold text-green-500 m-4 border-2 rounded-full p-2 bg-blue-50">
+        {count}
+      </p>
       <div className="flex flex-row gap-3 p-4">
         <button
           className="cursor-pointer border rounded-2xl p-2 bg-blue-500 text-white"
@@ -59,5 +55,3 @@ export default function Home() {
     </div>
   );
 }
-
-
