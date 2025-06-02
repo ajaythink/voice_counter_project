@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <div className=" min-h-screen bg-blue-500">
-      <h1 className=" text-center text-2xl font-bold p-2 ">Naam Jaap App</h1>
+      <h1 className=" text-center text-2xl font-bold p-2 ">Naam Jaap App Ajay Nice</h1>
       <div className="flex flex-col items-center justify-center  bg-white border rounded-2xl border-pink-800 m-4">
         <p className="text-7xl font-bold text-green-500 m-4 rounded-full w-[200px] h-[200px] bg-yellow-300 text-center items-center flex justify-center">
           {count}
