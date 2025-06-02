@@ -60,44 +60,4 @@ export default function Home() {
   );
 }
 
-// const speechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-// const recognition = new speechRecognition();
 
-// let recognition;
-
-// if (typeof window !== "undefined") {
-//   const speechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-//   recognition = new speechRecognition();
-// }
-
-// const [recoStop, setRecoStop] = useState(true);
-
-// const [text, setText] = useState("Please press the above button to start voice recognition.");
-
-// const [count, setCount] =useState(0);
-
-// recognition.start=() =>{
-//   setText("Listening...");
-// }
-
-// const handleClick = () =>{
-//   if(recoStop) {
-//     recognition.start();
-//     setRecoStop(false);
-//     setText("Listening...");
-//     // recognition.onresult = (event) => {
-//     //   const result = event.results[0][0].transcript;
-//     //   setText(result);
-//     //   setCount(result.split(" ").length);
-//     // };
-//     // recognition.onerror = (event) => {
-//     //   console.error("Error occurred in recognition: " + event.error);
-//     //   setText("Error occurred, please try again.");
-//     // };
-//   }
-//   else{
-//     recognition.stop();
-//     setRecoStop(true);
-//     setText("Recognition stopped. Press the button to start again.");
-//   }
-// }
