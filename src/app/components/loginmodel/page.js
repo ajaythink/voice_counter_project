@@ -1,4 +1,23 @@
-const loginmodel = ({onClose, setRegisterPopModel}) => {
+"use client";
+import React, {useState} from "react";
+
+const defaultValue = {
+  email: "",
+  password: "", 
+};
+
+
+const Loginmodel = ({onClose, setRegisterPopModel}) => {
+  const [defaultData, setDefaultData] = useState(defaultValue);
+  const onValueChange = (e) => {
+    setDefaultData({ ...defaultData, [e.target.name]: e.target.value });
+  }
+  
+  const onLogin = async (e) => {
+    e.preventDefault();
+    console.log("defaultData: ", defaultData);
+  }
+
   return (
     <>
       <div className="fixed inset-0 bg-blue-200/80 flex items-center justify-center z-50">
@@ -14,6 +33,9 @@ const loginmodel = ({onClose, setRegisterPopModel}) => {
               <input
                 type="text"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                name="email"
+                value={defaultData.email}
+                onChange={(e) => onValueChange(e)}
               />
             </div>
             <div className="mb-4">
@@ -21,9 +43,12 @@ const loginmodel = ({onClose, setRegisterPopModel}) => {
               <input
                 type="password"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                name="password"
+                value = {defaultData.password}
+                onChange={(e) => onValueChange(e)}
               />
             </div>
-            <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors" >Login</button>
+            <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors" onClick={(e) => onLogin(e)}>Login</button>
           </form>
           <button className="cursor-pointer text-gray-500" onClick={setRegisterPopModel}>If you do not have account <span className="text-blue-400 font-bold pt-4">Register</span></button>
         </div>
@@ -31,4 +56,4 @@ const loginmodel = ({onClose, setRegisterPopModel}) => {
     </>
   );
 };
-export default loginmodel;
+export default Loginmodel;

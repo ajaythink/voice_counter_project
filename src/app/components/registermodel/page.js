@@ -11,7 +11,7 @@ const defaultData = {
 const Registermodel = ({ onClose, setLoginPopModelActive }) => {
   const [formData, setFormData] = useState(defaultData);
   const [error, setError] = useState(null);
-  const [sucess, setSucess] =  useState(null)
+  const [sucess, setSucess] = useState(null);
 
   const onValueChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,17 +33,14 @@ const Registermodel = ({ onClose, setLoginPopModelActive }) => {
       if (response.status === 200) {
         console.log("User registered successfully", response.data);
         setSucess("User registered successfully");
-        // setLoginPopModelActive(false);
-        // onClose();
-      }
-      else if(response.status === 409){
-        setError("User already exists. Please login."); 
       } else {
         setError(data.message || "Registration failed. Please try again.");
       }
     } catch (err) {
-      if(err.response){
-        setError(err.response.data.message || "Registration failed. Please try again.");
+      if (err.response) {
+        setError(
+          err.response.data.message || "Registration failed. Please try again."
+        );
       }
       console.error("Error during registration: ", err);
     }

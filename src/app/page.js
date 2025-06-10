@@ -5,7 +5,7 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 import { FaMicrophone } from "react-icons/fa6";
 import { FaMicrophoneSlash } from "react-icons/fa";
-import LoginPopModel from "@/app/components/loginmodel.js";
+import LoginPopModel from "@/app/components/loginmodel/page.js";
 import RegisterModel from "@/app/components/registermodel/page";
 
 export default function Home() {
