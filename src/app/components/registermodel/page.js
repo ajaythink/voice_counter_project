@@ -50,7 +50,7 @@ const Registermodel = ({ onClose, setLoginPopModelActive }) => {
     <>
       <div className="fixed inset-0 bg-blue-200/80 flex items-center justify-center z-50 ">
         <div className="relative bg-white p-6 rounded-lg shadow-lg w-96 ">
-          <h2 className="text-xl font-bold mb-4">Login</h2>
+          <h2 className="text-xl font-bold mb-4 text-black">Login</h2>
           {error && <div className="text-red-500 mb-4">{error}</div>}
           {sucess && <div className="text-green-500 mb-4">{sucess}</div>}
           <span
@@ -60,9 +60,9 @@ const Registermodel = ({ onClose, setLoginPopModelActive }) => {
             &times;
           </span>
 
-          <form>
+          <form classNeam="text-black">
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">Name</label>
+              <label className="block text-sm font-medium mb-2 text-black">Name</label>
               <input
                 type="text"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -72,7 +72,7 @@ const Registermodel = ({ onClose, setLoginPopModelActive }) => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">Email</label>
+              <label className="block text-sm font-medium mb-2 text-black">Email</label>
               <input
                 type="email"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
