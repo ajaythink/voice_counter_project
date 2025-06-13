@@ -53,7 +53,7 @@ const Loginmodel = ({ onClose, setRegisterPopModel }) => {
     <>
       <div className="fixed inset-0 bg-blue-200/80 flex items-center justify-center z-50">
         <div className="relative bg-white p-6 rounded-lg shadow-lg w-96 blur-none">
-          <h2 className="text-xl font-bold mb-4">Login</h2>
+          <h2 className="text-xl font-bold mb-4 text-black">Login</h2>
           {error && <div className="text-red-500 mb-4">{error}</div>}
           <span
             className="text-5xl absolute top-2 right-2 text-gray-500 hover:text-gray-700 cursor-pointer rounded-full hover:bg-gray-200 w-[35px] h-[35px] text-center "
@@ -64,7 +64,7 @@ const Loginmodel = ({ onClose, setRegisterPopModel }) => {
 
           <form>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">Email</label>
+              <label className="block text-sm font-medium mb-2 text-black">Email</label>
               <input
                 type="text"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -74,7 +74,7 @@ const Loginmodel = ({ onClose, setRegisterPopModel }) => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">Password</label>
+              <label className="block text-sm font-medium mb-2 text-black">Password</label>
               <input
                 type="password"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
