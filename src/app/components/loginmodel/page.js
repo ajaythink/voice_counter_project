@@ -62,7 +62,7 @@ const Loginmodel = ({ onClose, setRegisterPopModel }) => {
             &times;
           </span>
 
-          <form>
+          <form className="text-black">
             <div className="mb-4">
               <label className="block text-sm font-medium mb-2 text-black">Email</label>
               <input
