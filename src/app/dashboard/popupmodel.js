@@ -5,16 +5,11 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 import { FaMicrophone } from "react-icons/fa6";
 import { FaMicrophoneSlash } from "react-icons/fa";
-import Topnavbar from "@/app/components/topnavbar/page";
-import { useRouter } from "next/navigation";
+import LoginPopModel from "@/app/components/loginmodel/page.js";
+import RegisterModel from "@/app/components/registermodel/page";
+
+
 export default function Dashboard() {
-  const router = useRouter();
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/ ");
-    }
-  });
   const [count, setCount] = useState(0);
 
   const { transcript, browserSupportsSpeechRecognition } =
@@ -34,11 +29,7 @@ export default function Dashboard() {
   }, [transcript]);
 
   if (!browserSupportsSpeechRecognition) {
-    return (
-      <span>
-        Browser does not support speech recognition.<h1>hello</h1>{" "}
-      </span>
-    );
+    return <span>Browser does not support speech recognition.</span>;
   }
   const startListning = () => {
     setIsActive(false);
@@ -51,25 +42,49 @@ export default function Dashboard() {
     setuserMsg("Press the microphone button to start counting your naam jaap.");
     SpeechRecognition.stopListening();
   };
-  const DummyUser = "Ajay Kumar"; // Dummy username for display purposes
-  const handleLogout = () => {
-    localStorage.removeItem("token"); // Clear JWT
-    localStorage.removeItem("user"); // If you stored user data
-    window.location.href = "/";
-  };
+
+  // const loginPopModel = () => {
+  //   setLoginPopModelActive(!loginPopModelActive);
+  // };
 
   return (
     <div className=" min-h-screen w-full bg-blue-500">
       <header className="flex p-4 ">
-        <Topnavbar
-          isDashboard={true}
-          username={DummyUser}
-          onLogout={handleLogout}
-        />
+        <h1 className="size-14 grow text-center text-2xl font-bold pt-2 text-white">
+          Naam Jaap App
+        </h1>
+        <button
+          className="size-14 flex-none cursor-pointer border border-white rounded-2xl bg-gradient-to-b from-yellow-500 to-pink-500 font-bold "
+          onClick={() => setLoginPopModelActive(true)}
+        >
+          Login
+        </button>
+        <button
+          className="py-1 px-2 flex-none cursor-pointer border border-white rounded-2xl bg-gradient-to-b from-green-500 to-yellow-500 font-bold"
+          onClick={() => setRegisterPopModel(true)}
+        >
+          Register
+        </button>
+        {loginPopModelActive && (
+          <LoginPopModel
+            onClose={() => setLoginPopModelActive(false)}
+            setRegisterPopModel={() => (
+              setRegisterPopModel(true), setLoginPopModelActive(false)
+            )}
+          />
+        )}
+        {RegisterPopModel && (
+          <RegisterModel
+            onClose={() => setRegisterPopModel(false)}
+            setLoginPopModelActive={() => (
+              setRegisterPopModel(false), setLoginPopModelActive(true)
+            )}
+          />
+        )}
       </header>
 
       <div className="flex flex-col items-center justify-center  bg-white  rounded-2xl  m-4">
-        <p className="text-black">{userMsg}</p>
+        <p>{userMsg}</p>
         <p className="text-7xl font-bold text-green-500 m-4 rounded-full w-[200px] h-[200px] bg-yellow-300 text-center items-center flex justify-center">
           {count}
         </p>

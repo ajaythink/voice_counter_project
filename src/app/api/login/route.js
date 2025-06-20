@@ -44,6 +44,11 @@ export const POST = async (NextRequest) => {
         message: "Login successful",
         success: true,
         token,
+        user: {
+          id: userExists._id,
+          name: userExists.name,
+          email: userExists.email,
+        },
       }),
       {
         status: 200,

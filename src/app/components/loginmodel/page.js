@@ -9,7 +9,7 @@ const defaultValue = {
   password: "",
 };
 
-const Loginmodel = ({ onClose, setRegisterPopModel }) => {
+export default function LoginPopModel({ onClose, setRegisterPopModel }) {
   const router = useRouter();
   const [defaultData, setDefaultData] = useState(defaultValue);
   const [error, setError] = useState(null);
@@ -36,6 +36,8 @@ const Loginmodel = ({ onClose, setRegisterPopModel }) => {
 
       if (response.status === 200) {
         console.log("Login successful", response.data);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         router.push("/dashboard");
       }
     } catch (err) {
@@ -51,7 +53,7 @@ const Loginmodel = ({ onClose, setRegisterPopModel }) => {
 
   return (
     <>
-      <div className="fixed inset-0 bg-blue-200/80 flex items-center justify-center z-50">
+      <div className="fixed inset-0 bg-white/30 backdrop-blur-sm flex items-center justify-center z-50">
         <div className="relative bg-white p-6 rounded-lg shadow-lg w-96 blur-none">
           <h2 className="text-xl font-bold mb-4 text-black">Login</h2>
           {error && <div className="text-red-500 mb-4">{error}</div>}
@@ -64,7 +66,9 @@ const Loginmodel = ({ onClose, setRegisterPopModel }) => {
 
           <form className="text-black">
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-2 text-black">Email</label>
+              <label className="block text-sm font-medium mb-2 text-black">
+                Email
+              </label>
               <input
                 type="text"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -74,7 +78,9 @@ const Loginmodel = ({ onClose, setRegisterPopModel }) => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-2 text-black">Password</label>
+              <label className="block text-sm font-medium mb-2 text-black">
+                Password
+              </label>
               <input
                 type="password"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -91,13 +97,13 @@ const Loginmodel = ({ onClose, setRegisterPopModel }) => {
               Login
               {loading ? (
                 <AiOutlineLoading3Quarters className="animate-spin" />
-              ) : (   
+              ) : (
                 ""
               )}
             </button>
           </form>
           <button
-            className="cursor-pointer text-gray-500"
+            className="cursor-pointer text-gray-500 pt-4"
             onClick={setRegisterPopModel}
           >
             If you do not have account{" "}
@@ -107,5 +113,4 @@ const Loginmodel = ({ onClose, setRegisterPopModel }) => {
       </div>
     </>
   );
-};
-export default Loginmodel;
+}
